@@ -1,29 +1,30 @@
 package gameset.Heroes;
-
-public class Lancer extends Human{
-    private int id = 0;
-    private String strName = "";
-
-    public Lancer(){        
-        SetDefault();  
-        this.strName = "lancer_" + Integer.valueOf(this.id).toString();    
-        super.SetName(this.strName);        
+/*
+ * Копейщик
+ */
+public class Lancer extends Human{    
+    
+    public Lancer(String inName){        
+        super.SetName(inName);
+        super.SetDamageMin(1);
+        super.SetDamageMax(3);        
+        super.SetAttack(4);
+        super.SetArmor(5);
+        super.SetDexterity(4);
     }
     
-    public Lancer(String inName){
-        SetDefault();
-        super.SetName(inName);
+    
+    public Lancer(){        
+        this("");             
+        super.SetName("lancer_" + Integer.valueOf(super.GetId()).toString());        
+    }
+    
+    public void GetInfo(){        
+        System.out.printf("Я Копейщик (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d)\n", 
+        super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
+        super.GetDexterity(), super.GetArmor(), super.GetAttack());
     }
 
-    private void SetDefault(){  
-        temp++; 
-        this.id = temp; 
-        super.SetInd(this.id);     
-        super.SetHealth(40);
-        super.SetDamageMin(40);
-        super.SetDamageMax(45);
-        super.SetDexterity(0.1); 
-        super.SetArmor(6);        
-    }
+    
 
 }

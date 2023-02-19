@@ -1,26 +1,26 @@
 package gameset.Heroes;
-
-public class Bandit extends Human{    
-    public int id = 0;
+/*
+ * Бандит
+ */
+public class Bandit extends Human{       
     
-    public Bandit(){    
-        SetDefault();       
-        super.SetName("bandit_" + Integer.valueOf(this.id).toString());        
-    }
-    public Bandit(String inName){  
-        SetDefault();
-        super.SetName(inName);        
+    public Bandit(String inName){        
+        super.SetName(inName);
+        super.SetDamageMin(2);
+        super.SetDamageMax(4);        
+        super.SetAttack(8);
+        super.SetArmor(3);
+        super.SetDexterity(6);
     }
 
-    private void SetDefault(){         
-        temp++;  
-        this.id = temp;
-        super.SetInd(this.id);   
-        super.SetHealth(40);
-        super.SetDamageMin(10);
-        super.SetDamageMax(15);
-        super.SetDexterity(0.04);
-        super.SetArmor(4);        
-    }     
-
+    public Bandit(){          
+        this(""); 
+        super.SetName("bandit_" + Integer.valueOf(super.GetId()).toString());       
+    }
+    
+    public void GetInfo(){        
+        System.out.printf("Я Бандит (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d)\n", 
+        super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
+        super.GetDexterity(), super.GetArmor(), super.GetAttack());
+    }
 }

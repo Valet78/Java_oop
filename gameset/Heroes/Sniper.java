@@ -1,29 +1,33 @@
 package gameset.Heroes;
 
-public class Sniper extends Human{
-    private int id = 0;
-    private String strName = "";
+public class Sniper extends Human{  
+    private int arrows;  
 
     public Sniper(){        
-        SetDefault();  
-        this.strName = "farmer_" + Integer.valueOf(this.id).toString();    
-        super.SetName(this.strName);        
+        this("");         
+        super.SetName("sniper_" + Integer.valueOf(super.GetId()).toString());        
     }
     
-    public Sniper(String inName){
-        SetDefault();
+    public Sniper(String inName){        
         super.SetName(inName);
+        super.SetHealthMax(15);
+        super.SetHealthNom(15);
+        super.SetDamageMin(8);
+        super.SetDamageMax(10);        
+        super.SetAttack(12);
+        super.SetArmor(10);
+        super.SetDexterity(9);
+        this.arrows = 32;
+
     }
 
-    private void SetDefault(){  
-        temp++; 
-        this.id = temp; 
-        super.SetInd(this.id);     
-        super.SetHealth(40);
-        super.SetDamageMin(50);
-        super.SetDamageMax(55);
-        super.SetDexterity(0.6);   
-        super.SetArmor(3);      
+    public int GetArrows(){return this.arrows;}
+    public void SetArrows(int inArr){this.arrows = inArr;}
+
+    public void GetInfo(){        
+        System.out.printf("Я Снайпер (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d arrows=%d)\n", 
+        super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
+        super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.arrows);
     }
 
 }

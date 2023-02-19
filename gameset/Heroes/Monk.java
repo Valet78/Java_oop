@@ -1,37 +1,36 @@
 package gameset.Heroes;
-
-import java.text.DecimalFormat;
-
+/* 
+* Монах 
+*/
 public class Monk extends Human{
-    public int id = 0, manna = 0, magdam = 0;
+    public int mannaMax, mannaNom;
     
     public Monk(){    
-        SetDefault();       
-        super.SetName("magician_" + Integer.valueOf(this.id).toString());        
+        this("");       
+        super.SetName("magician_" + Integer.valueOf(super.GetId()).toString());        
     }
     public Monk(String inName){  
-        SetDefault();
-        super.SetName(inName);        
+        super.SetName(inName);
+        super.SetHealthMax(30);
+        super.SetHealthNom(30);
+        super.SetDamageMin(2);
+        super.SetDamageMax(4);        
+        super.SetAttack(12);
+        super.SetArmor(7);
+        super.SetDexterity(5);
+        this.mannaMax = 1;
+        this.mannaNom = 1;       
     }
 
-    private void SetDefault(){         
-        temp++;  
-        this.id = temp;
-        super.SetInd(this.id);   
-        super.SetHealth(40);
-        super.SetDamageMin(25);
-        super.SetDamageMax(30);
-        super.SetDexterity(0.3);
-        super.SetArmor(1);
-        this.manna =  20;
-        this.magdam = 5;       
-    }     
+    public int GetMannaMax(){return this.mannaMax;}
+    public int GetMannaNom(){return this.mannaNom;}
+    public void SetMannaMax(int inManna){this.mannaMax = inManna;}
+    public void SetMannaNom(int inManna){this.mannaNom = inManna;}
 
-    @Override
-    public void GetInfo(){
-        DecimalFormat txtDext = new DecimalFormat("#.##");
-        System.out.printf("id=%d name=%s hp=%d dmin=%d dmax=%d dex=%s man=%d \n", this.id, GetName(), GetHealth(), GetDamageMin(), GetDamageMax(), txtDext.format(GetDexterity()), this.manna);
-        
+    public void GetInfo(){        
+        System.out.printf("Я Монах (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d manna=%d(%d))\n", 
+        super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
+        super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.mannaNom, this.mannaMax);
     }
 
 }

@@ -11,3 +11,30 @@
 * В основной программе создать по одному экземпляру каждого типа персонажей.
 
 PS: основной файл (main) - <a>games.java</a>
+
+### Пример характеристик персонажей
+
+<table border="1">
+<tr ><th></th><th>крестьянин</th><th>разбойник</th><th>копейщик</th>
+    <th>снайпер</th><th>арбалетчик</th><th>колдун</th><th>монах</th></tr>
+<tr><td>здоровье max</td><td>10</td><td>10</td><td>10</td>
+    <td>15</td><td>10</td><td>30</td><td>30</td></tr>
+<tr><td>здоровье nom</td><td>10</td><td>10</td><td>10</td><td>15</td>
+    <td>10</td><td>30</td><td>30</td></tr>
+<tr><td>атака</td><td>1</td><td>8</td><td>4</td><td>12</td>
+    <td>6</td><td>17</td><td>12</td></tr>
+<tr><td>защита</td><td>1</td><td>3</td><td>5</td><td>10</td>
+    <td>3</td><td>12</td><td>7</td></tr>
+<tr><td>урон min</td><td>0</td><td>2</td><td>1</td><td>8</td>
+    <td>2</td><td>2</td><td>2</td></tr>
+<tr><td>урон max</td><td>1</td><td>4</td><td>3</td><td>10</td>
+    <td>3</td><td>5</td><td>4</td></tr>
+<tr><td>скорость</td><td>3</td><td>6</td><td>4</td><td>9</td>
+    <td>4</td><td>9</td><td>5</td></tr>
+<tr><td>выстрелы</td><td>-</td><td>-</td><td>-</td><td>32</td>
+    <td>16</td><td>-</td><td>-</td></tr>
+<tr><td>доставка</td><td>1</td><td>-</td><td>-</td><td>-</td>
+    <td>-</td><td>-</td><td>-</td></tr>   
+<tr><td>магия</td><td>-</td><td>-</td><td>-</td><td>-</td>
+    <td>-</td><td>3</td><td>1</td></tr>   
+</table>

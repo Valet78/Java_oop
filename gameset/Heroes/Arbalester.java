@@ -1,29 +1,36 @@
 package gameset.Heroes;
-
+/*
+ * Арбалетчик
+ */
 public class Arbalester extends Human{
-    private int id = 0;
-    private String strName = "";
+    private int arrows;
 
     public Arbalester(){        
-        SetDefault();  
-        this.strName = "arbalester_" + Integer.valueOf(this.id).toString();    
-        super.SetName(this.strName);        
+        this("");           
+        super.SetName("arbalester_" + Integer.valueOf(super.GetId()).toString());        
     }
     
     public Arbalester(String inName){
-        SetDefault();
         super.SetName(inName);
+        super.SetHealthMax(10);
+        super.SetHealthNom(10);
+        super.SetDamageMin(2);
+        super.SetDamageMax(3);        
+        super.SetAttack(6);
+        super.SetArmor(3);
+        super.SetDexterity(4);
+        this.arrows = 16;
+
     }
 
-    private void SetDefault(){  
-        temp++; 
-        this.id = temp; 
-        super.SetInd(this.id);     
-        super.SetHealth(40);
-        super.SetDamageMin(25);
-        super.SetDamageMax(30);
-        super.SetDexterity(0.4);  
-        super.SetArmor(6);      
-    }
+    public int GetArrows(){return this.arrows;}
+    public void SetArrows(int inArr){this.arrows = inArr;}
+
+    public void GetInfo(){        
+        System.out.printf("Я Арбалетчик (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d arrows=%d)\n", 
+        super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
+        super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.arrows);
+    } 
+
 
 }
