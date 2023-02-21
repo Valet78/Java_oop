@@ -53,7 +53,9 @@ public abstract class Human implements SetGamesDef {
     //     this.id, this.name, this.healthNom, this.healthMax, this.damageMin, this.damageMax, 
     //     this.dexterity, this.armor, this.attack);
     // }
-
-    // public void GetInfo(){}
+    
+    // public String GetInfo(){
+    //     return "";
+    // }
 
 }

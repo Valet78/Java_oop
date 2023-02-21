@@ -4,13 +4,18 @@
 
 package gameset;
 
-// import gameset.Heroes.Arbalester;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import gameset.Heroes.Human;
+import gameset.Heroes.Arbalester;
 import gameset.Heroes.Bandit;
 import gameset.Heroes.Farmer;
-// import gameset.Heroes.Lancer;
+import gameset.Heroes.Lancer;
 import gameset.Heroes.Magician;
-// import gameset.Heroes.Monk;
-// import gameset.Heroes.Sniper;
+import gameset.Heroes.Monk;
+import gameset.Heroes.Sniper;
 
 public class games {
     public static void main(String[] args) {
@@ -63,6 +68,48 @@ public class games {
         conOut.OutString(dobr.GetInfo());
 
         // dobr.ddf(dobr.getClass().getName());
+
+
+        // Составить список персонажей
+        List<Human> heroesList = new ArrayList<Human>();
+        Random rd = new Random();
+        String nameUn = "";
+
+        for(int i=0; i < 10; i++){
+            nameUn = "Human_" + Integer.toString(i);            
+            switch (rd.nextInt(0, 6)) {
+                case 0:                    
+                    heroesList.add(new Farmer(nameUn));
+                    break;
+                case 1:                    
+                    heroesList.add(new Bandit(nameUn));
+                    break;
+                case 2:                    
+                    heroesList.add(new Lancer(nameUn));
+                    break;
+                case 3:                    
+                    heroesList.add(new Sniper(nameUn));
+                    break;
+                case 4:                    
+                    heroesList.add(new Arbalester(nameUn));
+                    break;
+                case 5:                    
+                    heroesList.add(new Magician(nameUn));
+                    break;    
+                case 6:                    
+                    heroesList.add(new Monk(nameUn));
+                    break;
+            }
+            heroesList.forEach((n) -> {conOut.OutString(n.GetInfo());});
+
+            // for(Human k in heroesList){
+            //     conOut.OutString(k.GetInfo());
+
+            // }
+
+
+
+        }   
 
     }
     

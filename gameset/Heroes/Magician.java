@@ -3,7 +3,7 @@ package gameset.Heroes;
  * Маг (Колдун)
  */
 
-public class Magician extends Human{
+public class Magician extends Human implements SetMagic {
     public int mannaMax, mannaNom;
     
     public Magician(){ 
@@ -22,8 +22,9 @@ public class Magician extends Human{
         super.SetDexterity(9);
         this.mannaMax = 3;
         this.mannaNom = 3;
+        // this.mannaMax = mannT;
     }
-
+    
     public int GetMannaMax(){return this.mannaMax;}
     public int GetMannaNom(){return this.mannaNom;}
     public void SetMannaMax(int inManna){this.mannaMax = inManna;}
