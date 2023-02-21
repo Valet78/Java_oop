@@ -66,7 +66,7 @@ public class games {
         df.FizUron();
         System.out.println("--------------");  
         conOut.OutString(dobr.GetInfo());
-
+        System.out.println("--------------"); 
         // dobr.ddf(dobr.getClass().getName());
 
 
@@ -99,17 +99,9 @@ public class games {
                 case 6:                    
                     heroesList.add(new Monk(nameUn));
                     break;
-            }
-            heroesList.forEach((n) -> {conOut.OutString(n.GetInfo());});
-
-            // for(Human k in heroesList){
-            //     conOut.OutString(k.GetInfo());
-
-            // }
-
-
-
-        }   
+            }                  
+        } 
+       heroesList.forEach((n) -> {conOut.OutString(n.GetInfo());});        
 
     }
     

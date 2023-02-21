@@ -30,6 +30,6 @@ public class Bandit extends Human{
 
     @Override
     public String GetInfo() {
-        return "Я  бандит " + GetName() + ".";
+        return "Я бандит " + GetName() + ".";
     }
 }

@@ -38,7 +38,7 @@ public class Arbalester extends Human{
 
     @Override
     public String GetInfo() {
-        return "Я  арбалетчик " + GetName() + ".";
+        return "Я арбалетчик " + GetName() + ".";
     } 
 
 

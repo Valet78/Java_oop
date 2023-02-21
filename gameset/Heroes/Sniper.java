@@ -38,7 +38,7 @@ public class Sniper extends Human{
 
     @Override
     public String GetInfo() {
-        return "Я  снайпер " + GetName() + ".";
+        return "Я снайпер " + GetName() + ".";
     }
 
 }

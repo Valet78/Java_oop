@@ -33,7 +33,7 @@ public class Lancer extends Human{
 
     @Override
     public String GetInfo() {
-        return "Я  копейщик " + GetName() + ".";
+        return "Я копейщик " + GetName() + ".";
     }
 
     

@@ -38,7 +38,7 @@ public class Monk extends Human{
     }
     @Override
     public String GetInfo() {
-        return "Я  монах " + GetName() + ".";
+        return "Я монах " + GetName() + ".";
     }
 
 }

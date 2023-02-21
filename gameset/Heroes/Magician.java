@@ -41,7 +41,7 @@ public class Magician extends Human implements SetMagic {
     }
     @Override
     public String GetInfo() {        
-        return "Я  колдун " + GetName() + ".";
+        return "Я колдун " + GetName() + ".";
     }
 
 }
