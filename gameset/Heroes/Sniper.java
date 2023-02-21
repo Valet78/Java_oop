@@ -1,5 +1,7 @@
 package gameset.Heroes;
-
+/*
+ * Снайпер
+ */
 public class Sniper extends Human{  
     private int arrows;  
 
@@ -24,10 +26,19 @@ public class Sniper extends Human{
     public int GetArrows(){return this.arrows;}
     public void SetArrows(int inArr){this.arrows = inArr;}
 
-    public void GetInfo(){        
-        System.out.printf("Я Снайпер (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d arrows=%d)\n", 
-        super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
-        super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.arrows);
+    // public void GetInfo(){        
+    //     System.out.printf("Я Снайпер (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d arrows=%d)\n", 
+    //     super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
+    //     super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.arrows);
+    // }
+
+    @Override
+    public void step() {
+    }
+
+    @Override
+    public String GetInfo() {
+        return "Я  снайпер " + GetName() + ".";
     }
 
 }

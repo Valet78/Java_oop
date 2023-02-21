@@ -27,10 +27,18 @@ public class Monk extends Human{
     public void SetMannaMax(int inManna){this.mannaMax = inManna;}
     public void SetMannaNom(int inManna){this.mannaNom = inManna;}
 
-    public void GetInfo(){        
-        System.out.printf("Я Монах (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d manna=%d(%d))\n", 
-        super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
-        super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.mannaNom, this.mannaMax);
+    // public void GetInfo(){        
+    //     System.out.printf("Я Монах (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d manna=%d(%d))\n", 
+    //     super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
+    //     super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.mannaNom, this.mannaMax);
+    // }
+
+    @Override
+    public void step() {
+    }
+    @Override
+    public String GetInfo() {
+        return "Я  монах " + GetName() + ".";
     }
 
 }

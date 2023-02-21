@@ -3,7 +3,7 @@ package gameset.Heroes;
 /**
  * Абстрактный общий класс
  */
-public abstract class Human {
+public abstract class Human implements SetGamesDef {
     protected static int numEkz; 
     private int id, healthMax, healthNom, damageMin, damageMax,  armor, attack, dexterity;       
     private String name = "";  
@@ -53,5 +53,7 @@ public abstract class Human {
     //     this.id, this.name, this.healthNom, this.healthMax, this.damageMin, this.damageMax, 
     //     this.dexterity, this.armor, this.attack);
     // }
+
+    // public void GetInfo(){}
 
 }

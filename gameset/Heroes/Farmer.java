@@ -18,10 +18,19 @@ public class Farmer extends Human{
     public void SetDelivery(int inDeliv){this.delivery = inDeliv;}
 
     
-    public void GetInfo(){
-        System.out.printf("Я Крестьянин (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d deliv=%d)\n", 
-        super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
-        super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.delivery);
+    // public void GetInfo(){
+    //     System.out.printf("Я Крестьянин (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d deliv=%d)\n", 
+    //     super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
+    //     super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.delivery);
+    // }
+
+    @Override
+    public void step() {        
+    }
+
+    @Override
+    public String GetInfo() {
+        return "Я крестьянин " + GetName() + ".";
     }
 
 }
