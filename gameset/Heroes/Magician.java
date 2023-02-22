@@ -3,7 +3,7 @@ package gameset.Heroes;
  * Маг (Колдун)
  */
 
-public class Magician extends Human implements SetMagic {
+public class Magician extends Human {
     public int mannaMax, mannaNom;
     
     public Magician(){ 

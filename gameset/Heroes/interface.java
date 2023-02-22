@@ -5,11 +5,4 @@ interface  SetGamesDef {
     String GetInfo();
     
 }
- interface SetMagic{
-    // int mannT = extracted();
-
-    // static int extracted() {
-    //     return 50;
-    // }
-
- }
+ 
