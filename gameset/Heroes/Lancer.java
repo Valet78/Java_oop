@@ -27,7 +27,7 @@ public class Lancer extends Human{
 
 
     @Override
-    public void step() {
+    public void Step() {
     }
 
 

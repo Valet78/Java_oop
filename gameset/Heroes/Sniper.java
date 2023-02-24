@@ -33,7 +33,7 @@ public class Sniper extends Human{
     // }
 
     @Override
-    public void step() {
+    public void Step() {
     }
 
     @Override

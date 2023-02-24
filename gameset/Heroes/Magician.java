@@ -37,7 +37,7 @@ public class Magician extends Human {
     // }
 
     @Override
-    public void step() {
+    public void Step() {
     }
     @Override
     public String GetInfo() {        

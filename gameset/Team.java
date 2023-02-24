@@ -1,8 +1,13 @@
 package gameset;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import gameset.Heroes.Arbalester;
 import gameset.Heroes.Bandit;
@@ -15,10 +20,6 @@ import gameset.Heroes.Sniper;
 
 public class Team {
     private String nameTeam = "";
-    
-    // public Team(String name){
-    //     this.nameTeam = name;
-    // }
     
     public Team() {
         this.nameTeam = "NoName";
@@ -39,6 +40,7 @@ public class Team {
             rdn = rd.nextInt(0, 6);
             tmp.add(SwitchHuman(rdn, inName));             
         } 
+        tmp = SortListTeam(tmp);
         return tmp;
     }
 
@@ -55,14 +57,13 @@ public class Team {
             rdn = rd.nextInt(0, len);
             tmp.add(SwitchHuman(listType[rdn], inName));             
         } 
-
+        tmp = SortListTeam(tmp);
         return tmp;
     }
 
     // Модуль выборки персонажей
     private Human SwitchHuman(int inNum, String nUn){
-        Human tmpHuman; 
-
+        Human tmpHuman = null; 
         switch (inNum) {
             case 0:                    
                 tmpHuman = new Farmer(nUn);
@@ -84,11 +85,28 @@ public class Team {
                 break;    
             case 6:                    
                 tmpHuman = new Monk(nUn);
-                break;
-            default:
-                tmpHuman = new Human() {};
-                break;
+                break;            
         }
+        tmpHuman.SetNameTeam(this.nameTeam);
         return tmpHuman;
     }
+
+    // Модуль сортировки
+    private List<Human> SortListTeam(List<Human> inList){        
+        List<Human> tmpList = new ArrayList<>();
+        List<Integer> tmpDext = new ArrayList<>(); 
+        
+        inList.forEach((n) -> {
+            if(!tmpDext.contains(n.GetDexterity())) 
+                tmpDext.add(n.GetDexterity());
+        });
+        tmpDext.sort(Comparator.reverseOrder());        
+        tmpDext.forEach((n) -> {
+            inList.forEach((x) -> {
+                if(x.GetDexterity() == n) tmpList.add(x);
+            });            
+        });        
+        return tmpList;
+    }
+
 }

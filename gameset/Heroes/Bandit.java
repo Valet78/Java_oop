@@ -25,7 +25,7 @@ public class Bandit extends Human{
     // }
 
     @Override
-    public void step() {
+    public void Step() {
     }
 
     @Override

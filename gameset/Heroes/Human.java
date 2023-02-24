@@ -6,7 +6,7 @@ package gameset.Heroes;
 public abstract class Human implements SetGamesDef {
     protected static int numEkz; 
     private int id, healthMax, healthNom, damageMin, damageMax,  armor, attack, dexterity;       
-    private String name = "";  
+    private String name = "", nameTeam = "";  
     
     static{numEkz = 0;}
 
@@ -21,6 +21,7 @@ public abstract class Human implements SetGamesDef {
         this.armor = 1;
         this.attack= 1;
         this.dexterity = 3;
+        this.nameTeam = "noname";
     }
 
     public Human(){
@@ -29,16 +30,18 @@ public abstract class Human implements SetGamesDef {
     
     public int GetId(){return this.id;}
     public String GetName(){return this.name;}
+    public String GetNameTeam(){return this.nameTeam;}
     public int GetHealthMax(){return this.healthMax;}
     public int GetHealthNom(){return this.healthNom;}
     public int GetDamageMin(){return this.damageMin;}
     public int GetDamageMax(){return this.damageMax;}
     public int GetArmor(){return this.armor;}
     public int GetAttack(){return this.attack;}
-    public int GetDexterity(){return this.dexterity;}    
-    
+    public int GetDexterity(){return this.dexterity;}        
+
     public void SetInd(int inId){this.id = inId;}
     public void SetName(String inName){this.name = inName;}
+    public void SetNameTeam(String inName){this.nameTeam = inName;}
     public void SetHealthMax(int inHealth){this.healthMax = inHealth;}
     public void SetHealthNom(int inHealth){this.healthNom = inHealth;}
     public void SetDamageMin(int inDamage_min){this.damageMin = inDamage_min;}
@@ -53,9 +56,15 @@ public abstract class Human implements SetGamesDef {
     //     this.id, this.name, this.healthNom, this.healthMax, this.damageMin, this.damageMax, 
     //     this.dexterity, this.armor, this.attack);
     // }
-    
-    public String GetInfo(){
-        return "";
-    }
+    // @Override
+    // public String GetInfo(){
+    //     return "";
+    // }
+
+    // @Override
+    // public int compareTo(Human inHum){
+    //     int compDext = inHum.GetDexterity();
+    //     return this.dexterity - compDext;
+    // }
 
 }
