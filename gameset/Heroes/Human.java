@@ -1,12 +1,17 @@
 package gameset.Heroes;
 
+import java.util.List;
+
+import gameset.location;
+
 /**
  * Абстрактный общий класс
  */
 public abstract class Human implements SetGamesDef {
     protected static int numEkz; 
     private int id, healthMax, healthNom, damageMin, damageMax,  armor, attack, dexterity;       
-    private String name = "", nameTeam = "";  
+    private String name = "", nameTeam = ""; 
+    private location loc = new location(); 
     
     static{numEkz = 0;}
 
@@ -21,7 +26,7 @@ public abstract class Human implements SetGamesDef {
         this.armor = 1;
         this.attack= 1;
         this.dexterity = 3;
-        this.nameTeam = "noname";
+        this.nameTeam = "noname";        
     }
 
     public Human(){
@@ -37,7 +42,8 @@ public abstract class Human implements SetGamesDef {
     public int GetDamageMax(){return this.damageMax;}
     public int GetArmor(){return this.armor;}
     public int GetAttack(){return this.attack;}
-    public int GetDexterity(){return this.dexterity;}        
+    public int GetDexterity(){return this.dexterity;}  
+    public List<Integer> GetLocation(){return loc.GetPozition();}      
 
     public void SetInd(int inId){this.id = inId;}
     public void SetName(String inName){this.name = inName;}
@@ -49,7 +55,7 @@ public abstract class Human implements SetGamesDef {
     public void SetArmor(int inArm){this.armor = inArm;}
     public void SetAttack(int inAttac){this.attack = inAttac;}    
     public void SetDexterity(int inDexterity){this.dexterity = inDexterity; }       
-
+    public void SetLocation(int inX, int inY){loc.SetPozition(inX, inY);} 
 
     // public void GetInfo(){        
     //     System.out.printf("id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d\n", 
@@ -59,12 +65,6 @@ public abstract class Human implements SetGamesDef {
     // @Override
     // public String GetInfo(){
     //     return "";
-    // }
-
-    // @Override
-    // public int compareTo(Human inHum){
-    //     int compDext = inHum.GetDexterity();
-    //     return this.dexterity - compDext;
-    // }
+    // }    
 
 }

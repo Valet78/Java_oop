@@ -4,17 +4,18 @@ package gameset.Heroes;
  */
 public class Bandit extends Human{       
     
-    public Bandit(String inName){        
+    public Bandit(String inName, int X, int Y){        
         super.SetName(inName);
         super.SetDamageMin(2);
         super.SetDamageMax(4);        
         super.SetAttack(8);
         super.SetArmor(3);
         super.SetDexterity(6);
+        super.SetLocation(X, Y);
     }
 
     public Bandit(){          
-        this(""); 
+        this("", 0, 0); 
         super.SetName("bandit_" + Integer.valueOf(super.GetId()).toString());       
     }
     
@@ -30,6 +31,6 @@ public class Bandit extends Human{
 
     @Override
     public String GetInfo() {
-        return "Я бандит " + GetName() + ".";
+        return "Я бандит " + GetName() + ", " + GetLocation();
     }
 }

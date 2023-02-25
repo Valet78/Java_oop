@@ -6,10 +6,10 @@ public class Monk extends Human{
     public int mannaMax, mannaNom;
     
     public Monk(){    
-        this("");       
+        this("", 0, 0);       
         super.SetName("magician_" + Integer.valueOf(super.GetId()).toString());        
     }
-    public Monk(String inName){  
+    public Monk(String inName, int X, int Y){  
         super.SetName(inName);
         super.SetHealthMax(30);
         super.SetHealthNom(30);
@@ -19,7 +19,8 @@ public class Monk extends Human{
         super.SetArmor(7);
         super.SetDexterity(5);
         this.mannaMax = 1;
-        this.mannaNom = 1;       
+        this.mannaNom = 1;
+        super.SetLocation(X, Y);       
     }
 
     public int GetMannaMax(){return this.mannaMax;}
@@ -38,7 +39,7 @@ public class Monk extends Human{
     }
     @Override
     public String GetInfo() {
-        return "Я монах " + GetName() + ".";
+        return "Я монах " + GetName() + ", " + GetLocation();
     }
 
 }

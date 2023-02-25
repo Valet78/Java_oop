@@ -4,18 +4,18 @@ package gameset.Heroes;
  */
 public class Lancer extends Human{    
     
-    public Lancer(String inName){        
+    public Lancer(String inName, int X, int Y){        
         super.SetName(inName);
         super.SetDamageMin(1);
         super.SetDamageMax(3);        
         super.SetAttack(4);
         super.SetArmor(5);
         super.SetDexterity(4);
+        super.SetLocation(X, Y);
     }
     
-    
     public Lancer(){        
-        this("");             
+        this("", 0, 0);             
         super.SetName("lancer_" + Integer.valueOf(super.GetId()).toString());        
     }
     
@@ -33,7 +33,7 @@ public class Lancer extends Human{
 
     @Override
     public String GetInfo() {
-        return "Я копейщик " + GetName() + ".";
+        return "Я копейщик " + GetName()+ ", " + GetLocation();
     }
 
     

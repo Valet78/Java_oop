@@ -5,14 +5,15 @@ package gameset.Heroes;
 public class Farmer extends Human{  
     private int delivery = 1;  
     
-    public Farmer(){         
+    public Farmer(){  
+        this("", 0, 0);        
         super.SetName("farmer_" +  Integer.valueOf(super.GetId()).toString()); 
     }  
 
-    public Farmer(String inName){        
-        super(inName);
-        
-    }    
+    public Farmer(String inName, int X, int Y){
+        super.SetName(inName);
+        super.SetLocation(X, Y);
+    }
 
     public int GetDelivery(){return this.delivery;}
     public void SetDelivery(int inDeliv){this.delivery = inDeliv;}
@@ -30,7 +31,9 @@ public class Farmer extends Human{
 
     @Override
     public String GetInfo() {
-        return "Я крестьянин " + GetName() + ".";
+        return "Я крестьянин " + GetName() + ", " + GetLocation();
     }
+
+
 
 }

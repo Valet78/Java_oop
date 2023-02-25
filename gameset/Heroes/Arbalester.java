@@ -6,11 +6,11 @@ public class Arbalester extends Human{
     private int arrows;
 
     public Arbalester(){        
-        this("");           
+        this("",0, 0);           
         super.SetName("arbalester_" + Integer.valueOf(super.GetId()).toString());        
     }
     
-    public Arbalester(String inName){
+    public Arbalester(String inName, int X, int Y){
         super.SetName(inName);
         super.SetHealthMax(10);
         super.SetHealthNom(10);
@@ -20,9 +20,10 @@ public class Arbalester extends Human{
         super.SetArmor(3);
         super.SetDexterity(4);
         this.arrows = 16;
-
+        super.SetLocation(X, Y);
     }
 
+   
     public int GetArrows(){return this.arrows;}
     public void SetArrows(int inArr){this.arrows = inArr;}
 
@@ -38,7 +39,7 @@ public class Arbalester extends Human{
 
     @Override
     public String GetInfo() {
-        return "Я арбалетчик " + GetName() + ".";
+        return "Я арбалетчик " + GetName() + ", " + GetLocation();
     } 
 
 

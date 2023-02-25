@@ -1,6 +1,6 @@
 package gameset.Heroes;
 
-interface  SetGamesDef {
+interface  SetGamesDef{
     void Step();
     String GetInfo();
     

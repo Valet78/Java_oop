@@ -7,11 +7,11 @@ public class Magician extends Human {
     public int mannaMax, mannaNom;
     
     public Magician(){ 
-        this("");              
+        this("", 0, 0);              
         super.SetName("magician_" + Integer.valueOf(super.GetId()).toString()); 
 
     }
-    public Magician(String inName){         
+    public Magician(String inName, int X, int Y){         
         super.SetName(inName);
         super.SetHealthMax(30);
         super.SetHealthNom(30);
@@ -22,9 +22,10 @@ public class Magician extends Human {
         super.SetDexterity(9);
         this.mannaMax = 3;
         this.mannaNom = 3;
+        super.SetLocation(X, Y);
         // this.mannaMax = mannT;
     }
-    
+   
     public int GetMannaMax(){return this.mannaMax;}
     public int GetMannaNom(){return this.mannaNom;}
     public void SetMannaMax(int inManna){this.mannaMax = inManna;}
@@ -41,7 +42,7 @@ public class Magician extends Human {
     }
     @Override
     public String GetInfo() {        
-        return "Я колдун " + GetName() + ".";
+        return "Я колдун " + GetName() + ", " + GetLocation();
     }
 
 }

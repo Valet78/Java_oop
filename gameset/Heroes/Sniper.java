@@ -6,11 +6,11 @@ public class Sniper extends Human{
     private int arrows;  
 
     public Sniper(){        
-        this("");         
+        this("", 0, 0);         
         super.SetName("sniper_" + Integer.valueOf(super.GetId()).toString());        
     }
     
-    public Sniper(String inName){        
+    public Sniper(String inName, int X, int Y){        
         super.SetName(inName);
         super.SetHealthMax(15);
         super.SetHealthNom(15);
@@ -20,7 +20,7 @@ public class Sniper extends Human{
         super.SetArmor(10);
         super.SetDexterity(9);
         this.arrows = 32;
-
+        super.SetLocation(X, Y);
     }
 
     public int GetArrows(){return this.arrows;}
@@ -38,7 +38,7 @@ public class Sniper extends Human{
 
     @Override
     public String GetInfo() {
-        return "Я снайпер " + GetName() + ".";
+        return "Я снайпер " + GetName() + ", " + GetLocation();
     }
 
 }

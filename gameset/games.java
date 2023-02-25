@@ -17,10 +17,10 @@ public class games {
 
 
         // Составить список персонажей        
-        Team rndTeam = new Team();
-        List<Human> rndList = rndTeam.AddTeamRnd(10, "RndTeam"); // создадим 10 случайных персонажей
-        rndList.forEach((n) -> {conOut.OutString(n.GetInfo());});
-        conOut.OutString("--------------");
+        // Team rndTeam = new Team();
+        // List<Human> rndList = rndTeam.AddTeamRnd(10, "RndTeam"); // создадим 10 случайных персонажей
+        // rndList.forEach((n) -> {conOut.OutString(n.GetInfo());});
+        // conOut.OutString("--------------");
 
         // В первом только крестьянин, разбойник, снайпер или колдун. Во втором крестьянин, копейщик, арбалетчик, монах.        
         int[] list1 = new int[]{0, 1, 3, 5};
@@ -36,6 +36,19 @@ public class games {
         
         LigthTeam.forEach((n) -> {conOut.OutString(n.GetInfo() + "     \t- " + n.GetNameTeam());});
         conOut.OutString("--------------");
+
+
+
+        /*  Создать класс с описанием координат, x и y.
+            Добавить в абстрактный класс поле с координатами и пробросить его инициализацию до конструкторов персонажей.
+            Farmer farmer = new Farmer(getName(), x, y);
+            Реализовать метод step() лучников. 
+            3.1 Если жизнь равна нулю или стрел нет, завершить оьработку. 
+            3.2 Поиск среди противников наиболее приближённого. 
+            3.3 Нанести среднее повреждение найденному противнику. 
+            3.4 Найти среди своих крестьянина. 
+            3.5 Если найден завершить метод иначе уменьшить запас стрел на одну. 
+        */
 
     }
     
