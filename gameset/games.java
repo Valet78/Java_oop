@@ -37,7 +37,7 @@ public class games {
         LigthTeam.forEach((n) -> {conOut.OutString(n.GetInfo() + "     \t- " + n.GetNameTeam());});
         conOut.OutString("--------------");
 
-
+// LigthTeam
 
         /*  Создать класс с описанием координат, x и y.
             Добавить в абстрактный класс поле с координатами и пробросить его инициализацию до конструкторов персонажей.
@@ -49,6 +49,13 @@ public class games {
             3.4 Найти среди своих крестьянина. 
             3.5 Если найден завершить метод иначе уменьшить запас стрел на одну. 
         */
+
+        location ttr = new location();
+
+        int zwer = ttr.SearchEnemy(LigthTeam.get(5), DarkTeam).get(0);
+        conOut.OutString("zwer = " + zwer);
+
+
 
     }
     

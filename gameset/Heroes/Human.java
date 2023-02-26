@@ -1,5 +1,7 @@
 package gameset.Heroes;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import gameset.location;
@@ -7,9 +9,9 @@ import gameset.location;
 /**
  * Абстрактный общий класс
  */
-public abstract class Human implements SetGamesDef {
+public abstract class Human implements SetGamesDef{
     protected static int numEkz; 
-    private int id, healthMax, healthNom, damageMin, damageMax,  armor, attack, dexterity;       
+    private int id, healthMax, healthNom, damageMin, damageMax,  armor, attack, dexterity, x, y;       
     private String name = "", nameTeam = ""; 
     private location loc = new location(); 
     
@@ -26,7 +28,9 @@ public abstract class Human implements SetGamesDef {
         this.armor = 1;
         this.attack= 1;
         this.dexterity = 3;
-        this.nameTeam = "noname";        
+        this.nameTeam = "noname";    
+        this.x = loc.GetPozition().get(0);
+        this.y = loc.GetPozition().get(1);    
     }
 
     public Human(){
@@ -43,7 +47,11 @@ public abstract class Human implements SetGamesDef {
     public int GetArmor(){return this.armor;}
     public int GetAttack(){return this.attack;}
     public int GetDexterity(){return this.dexterity;}  
-    public List<Integer> GetLocation(){return loc.GetPozition();}      
+    public List<Integer> GetLocation(){
+        // List<Integer> tmpPoz = new ArrayList<Integer>(2);
+        // tmpPoz = Arrays.asList(this.x, this.y);
+        return loc.GetPozition();
+    }      
 
     public void SetInd(int inId){this.id = inId;}
     public void SetName(String inName){this.name = inName;}
