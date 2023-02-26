@@ -34,6 +34,11 @@ public class Sniper extends Human{
 
     @Override
     public void Step() {
+        if(GetArrows() !=0 && GetHealthNom() !=0){
+
+
+        }
+        else {System.out.println("Он мёртв или у него нет стрел!");}
     }
 
     @Override

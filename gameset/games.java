@@ -7,10 +7,11 @@ package gameset;
 import java.util.List;
 
 import gameset.Heroes.Human;
+// import gameset.Heroes.Sniper;
 
 public class games {
     public static void main(String[] args) {
-        console conOut = new console();
+        Console conOut = new Console();
 
         // Farmer vasya = new Farmer("Vasya");
         // Farmer unit1 = new Farmer();   
@@ -50,13 +51,29 @@ public class games {
             3.5 Если найден завершить метод иначе уменьшить запас стрел на одну. 
         */
 
-        location ttr = new location();
+        // 3.2 Поиск среди противников наиболее приближённого. 
+        // Attack ttr = new Attack();
+        // // int zwer = ttr.SearchEnemy(LigthTeam.get(5), DarkTeam).get(0);
+        // // int dist = ttr.SearchEnemy(LigthTeam.get(5), DarkTeam).get(1);
+        // List<Integer> dist = ttr.SearchEnemy(LigthTeam.get(5), DarkTeam);
+        // int zwer = dist.get(0);
+        // conOut.OutString("zwer = " + zwer + " dist= " + dist);
+        
+        // 3.1 Если жизнь равна нулю или стрел нет, завершить оьработку.
+        // Sniper Trewor = new Sniper();
+        // // Trewor.SetHealthNom(0);
+        // Trewor.SetArrows(10);
+        // Trewor.Step();
 
-        int zwer = ttr.SearchEnemy(LigthTeam.get(5), DarkTeam).get(0);
-        conOut.OutString("zwer = " + zwer);
-
-
-
+        //3.4 Найти среди своих крестьянина.
+        Attack ttr = new Attack();
+        List<Integer> farmList = ttr.SearchFarmer(LigthTeam);
+        if(farmList.size() > 0){ 
+            farmList.forEach((x) -> {
+                conOut.OutString(LigthTeam.get(x).GetName());
+            });
+        }
+        else conOut.OutString("Нет в команде крестьянина.");
     }
     
 }

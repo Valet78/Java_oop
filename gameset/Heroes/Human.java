@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import gameset.location;
+import gameset.Location;
 
 /**
  * Абстрактный общий класс
@@ -13,7 +13,7 @@ public abstract class Human implements SetGamesDef{
     protected static int numEkz; 
     private int id, healthMax, healthNom, damageMin, damageMax,  armor, attack, dexterity, x, y;       
     private String name = "", nameTeam = ""; 
-    private location loc = new location(); 
+    private Location loc = new Location(); 
     
     static{numEkz = 0;}
 

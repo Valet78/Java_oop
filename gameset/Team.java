@@ -42,7 +42,7 @@ public class Team {
 
         // сортировка
         // tmp = SortListTeam(tmp);
-        tmp.sort((w1, w2) -> Integer.compare(w1.GetDexterity(), w2.GetDexterity()));
+        tmp.sort((w2, w1) -> Integer.compare(w1.GetDexterity(), w2.GetDexterity()));
         
         return tmp;
     }
@@ -71,7 +71,7 @@ public class Team {
         // сортировка
         // tmp = SortListTeam(tmp);
 
-        tmp.sort((w1, w2) -> Integer.compare(w1.GetDexterity(), w2.GetDexterity()));
+        tmp.sort((w2, w1) -> Integer.compare(w1.GetDexterity(), w2.GetDexterity()));
 
         idTeam = 2;
         return tmp;

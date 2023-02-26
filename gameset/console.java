@@ -1,8 +1,8 @@
 package gameset;
 
-public class console {
+public class Console{
     
-    public console(){}
+    public Console(){}
 
     public void OutString (String instr){
         System.out.println(instr);
