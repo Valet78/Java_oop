@@ -25,9 +25,9 @@ public class Bandit extends Human{
     //     super.GetDexterity(), super.GetArmor(), super.GetAttack());
     // }
 
-    @Override
-    public void Step() {
-    }
+    // @Override
+    // public void Step() {
+    // }
 
     @Override
     public String GetInfo() {

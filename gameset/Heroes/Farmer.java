@@ -25,9 +25,9 @@ public class Farmer extends Human{
     //     super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.delivery);
     // }
 
-    @Override
-    public void Step() {        
-    }
+    // @Override
+    // public void Step() {        
+    // }
 
     @Override
     public String GetInfo() {

@@ -1,10 +1,7 @@
 package gameset.Heroes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import gameset.Location;
+import gameset.Locations;
 
 /**
  * Абстрактный общий класс
@@ -13,7 +10,7 @@ public abstract class Human implements SetGamesDef{
     protected static int numEkz; 
     private int id, healthMax, healthNom, damageMin, damageMax,  armor, attack, dexterity, x, y;       
     private String name = "", nameTeam = ""; 
-    private Location loc = new Location(); 
+    private Locations loc = new Locations(); 
     
     static{numEkz = 0;}
 
@@ -64,6 +61,9 @@ public abstract class Human implements SetGamesDef{
     public void SetAttack(int inAttac){this.attack = inAttac;}    
     public void SetDexterity(int inDexterity){this.dexterity = inDexterity; }       
     public void SetLocation(int inX, int inY){loc.SetPozition(inX, inY);} 
+
+    @Override
+    public void Step(Human agress, List<Human> ownTeam, List<Human> listTaget){}
 
     // public void GetInfo(){        
     //     System.out.printf("id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d\n", 

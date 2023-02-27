@@ -3,53 +3,34 @@ package gameset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+// import java.util.Random;
 
-import gameset.Heroes.Farmer;
-import gameset.Heroes.Human;
+import gameset.Heroes.*;
 
-public class Attack{
-    private Random rnd = new Random();
-    private int min = 0,  dext = 0, arm = 0, randMax = 0;
-    private int hp = 0, max = 0, uron = 0, temp = 0;
+public class Attack{    
     static private double dist = 20, disttemp = 0;
     static List<Integer> locTaget = new ArrayList<>(2); 
     Human tir;
     
-    public Attack(){}     
+    public Attack(){ }     
     
-    public Attack(Human agress, Human taget){
-        this.min = agress.GetDamageMin();
-        this.max = agress.GetDamageMax();
-        this.dext = agress.GetDexterity(); 
-        this.hp = taget.GetHealthNom(); 
-        this.arm = taget.GetArmor();     
-        tir = taget;
-               
+    // Вычисление урона противнику
+    public int GoAttack(Human agress, Human taget, int distTaget){
+        int uron = 0, maxD = 0, minD = 0, dist100 = 0, dist50 = 0;
+        minD = agress.GetDamageMin();
+        maxD = agress.GetDamageMax();
+        dist100 = agress.GetAttack();
+        dist50 =  dist100 + (int)(dist100 / 2);
+        if(agress instanceof Sniper){
+            if(distTaget <= dist100) uron = maxD;
+            if(distTaget > dist100 || distTaget <= dist50) uron = minD + (int)((maxD - minD)/2);
+            if(distTaget > dist50) uron = minD;
+        }
+        uron -= taget.GetArmor();
+        return uron;
     }
 
-    public void FizUron(){
-        randMax = rnd.nextInt(max);
-        // this.uron = (int) (rnd.nextInt(min, max)*1000)  + this.dext + this.ttMax;
-        // this.uron = Math.abs(this.uron);
-        this.uron = this.max;
-        temp = this.hp - this.uron;
-        System.out.println("uron=" + this.uron);
-        if(temp > 0) tir.SetHealthNom(temp);
-        else {
-            tir.SetHealthNom(0);
-            System.out.println("Герой пал смертью храбрых.");
-        }                
-
-    } 
-
-    public int GetMin(){return this.min;}
-    public int GetMax(){return this.max;}
-    public int GetDext(){return this.dext;}
-    public int GetArm(){return this.arm;}
-    public int GetRand(){return this.randMax;}
-
-    
+        
     // модуль поиска врага ближнего
     public List<Integer> SearchEnemy(Human agress, List<Human> listTaget){
         List<Integer> locAgress = agress.GetLocation();         

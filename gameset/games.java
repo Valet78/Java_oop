@@ -8,10 +8,12 @@ import java.util.List;
 
 import gameset.Heroes.Human;
 // import gameset.Heroes.Sniper;
+import gameset.Heroes.Sniper;
 
-public class games {
+public class games{
     public static void main(String[] args) {
         Console conOut = new Console();
+        int uron = 0;
 
         // Farmer vasya = new Farmer("Vasya");
         // Farmer unit1 = new Farmer();   
@@ -51,7 +53,7 @@ public class games {
             3.5 Если найден завершить метод иначе уменьшить запас стрел на одну. 
         */
 
-        // 3.2 Поиск среди противников наиболее приближённого. 
+        // 3.2 Поиск среди противников наиболее приближённого. Проверка работы модуля.
         // Attack ttr = new Attack();
         // // int zwer = ttr.SearchEnemy(LigthTeam.get(5), DarkTeam).get(0);
         // // int dist = ttr.SearchEnemy(LigthTeam.get(5), DarkTeam).get(1);
@@ -59,21 +61,37 @@ public class games {
         // int zwer = dist.get(0);
         // conOut.OutString("zwer = " + zwer + " dist= " + dist);
         
-        // 3.1 Если жизнь равна нулю или стрел нет, завершить оьработку.
+        // 3.1 Если жизнь равна нулю или стрел нет, завершить оьработку. Проверка работы модуля.
         // Sniper Trewor = new Sniper();
         // // Trewor.SetHealthNom(0);
         // Trewor.SetArrows(10);
         // Trewor.Step();
 
-        //3.4 Найти среди своих крестьянина.
-        Attack ttr = new Attack();
-        List<Integer> farmList = ttr.SearchFarmer(LigthTeam);
-        if(farmList.size() > 0){ 
-            farmList.forEach((x) -> {
-                conOut.OutString(LigthTeam.get(x).GetName());
-            });
-        }
-        else conOut.OutString("Нет в команде крестьянина.");
+        //3.4 Найти среди своих крестьянина. Проверка работы модуля
+        // Attack ttr = new Attack();
+        // List<Integer> farmList = ttr.SearchFarmer(LigthTeam);
+        // if(farmList.size() > 0){ 
+        //     farmList.forEach((x) -> {
+        //         conOut.OutString(LigthTeam.get(x).GetName());
+        //     });
+        // }
+        // else conOut.OutString("Нет в команде крестьянина.");
+
+        // Если в команде светлых есть лучник/снайпер даем ему ход
+        
+        LigthTeam.forEach((n) ->{
+            if(n instanceof Sniper) {
+                n.Step(n, LigthTeam, DarkTeam);
+            } 
+        });
+
+        DarkTeam.forEach((x) -> {
+            if(x.GetHealthNom() <= 0){
+                conOut.OutString(x.GetName() + " погиб!");
+            } 
+            else conOut.OutString(x.GetName() + " health=" + x.GetHealthNom());
+        });
+
     }
     
 }

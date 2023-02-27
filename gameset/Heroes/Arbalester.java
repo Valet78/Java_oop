@@ -33,9 +33,9 @@ public class Arbalester extends Human{
     //     super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.arrows);
     // }
 
-    @Override
-    public void Step() {        
-    }
+    // @Override
+    // public void Step() {        
+    // }
 
     @Override
     public String GetInfo() {

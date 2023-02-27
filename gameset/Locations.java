@@ -1,21 +1,17 @@
 package gameset;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import gameset.Heroes.Farmer;
-import gameset.Heroes.Human;
-
-public class Location {
+public class Locations {
     private int x = 0, y = 0;
        
 
-    public Location(){
+    public Locations(){
         this(0, 0);
     }
 
-    public Location(int inX, int inY){
+    public Locations(int inX, int inY){
         this.x = inX;
         this.y = inY;
     }

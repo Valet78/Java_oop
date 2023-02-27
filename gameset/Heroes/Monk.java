@@ -34,9 +34,10 @@ public class Monk extends Human{
     //     super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.mannaNom, this.mannaMax);
     // }
 
-    @Override
-    public void Step() {
-    }
+    // @Override
+    // public void Step() {
+    // }
+    
     @Override
     public String GetInfo() {
         return "Я монах " + GetName() + ", " + GetLocation();
