@@ -6,6 +6,7 @@ package gameset;
 
 import java.util.List;
 
+import gameset.Heroes.Arbalester;
 import gameset.Heroes.Human;
 // import gameset.Heroes.Sniper;
 import gameset.Heroes.Sniper;
@@ -13,7 +14,7 @@ import gameset.Heroes.Sniper;
 public class games{
     public static void main(String[] args) {
         Console conOut = new Console();
-        int uron = 0;
+        // int uron = 0;
 
         // Farmer vasya = new Farmer("Vasya");
         // Farmer unit1 = new Farmer();   
@@ -35,8 +36,7 @@ public class games{
         conOut.OutString("--------------");
 
         Team LigthHeroes = new Team();
-        List<Human> LigthTeam = LigthHeroes.AddTeam(10, "LigthUnit", list1);
-        
+        List<Human> LigthTeam = LigthHeroes.AddTeam(10, "LigthUnit", list1);        
         LigthTeam.forEach((n) -> {conOut.OutString(n.GetInfo() + "     \t- " + n.GetNameTeam());});
         conOut.OutString("--------------");
 
@@ -86,11 +86,29 @@ public class games{
         });
 
         DarkTeam.forEach((x) -> {
-            if(x.GetHealthNom() <= 0){
+            if(x.GetHealthNom() == 0){
                 conOut.OutString(x.GetName() + " погиб!");
             } 
             else conOut.OutString(x.GetName() + " health=" + x.GetHealthNom());
         });
+        conOut.OutString("--------------");
+
+        // Теперь ходим арбалетчиком Тёмных
+        DarkTeam.forEach((n) ->{
+            if(n instanceof Arbalester) {
+                n.Step(n, DarkTeam, LigthTeam);
+            } 
+        });
+
+        LigthTeam.forEach((x) -> {
+            if(x.GetHealthNom() == 0){
+                conOut.OutString(x.GetName() + " погиб!");
+            } 
+            else conOut.OutString(x.GetName() + " health=" + x.GetHealthNom());
+        });
+
+
+
 
     }
     

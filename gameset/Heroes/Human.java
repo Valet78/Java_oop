@@ -8,13 +8,13 @@ import gameset.Locations;
  */
 public abstract class Human implements SetGamesDef{
     protected static int numEkz; 
-    private int id, healthMax, healthNom, damageMin, damageMax,  armor, attack, dexterity, x, y;       
+    private int id, healthMax, healthNom, damageMin, damageMax,  armor, attack, dexterity;       
     private String name = "", nameTeam = ""; 
-    private Locations loc = new Locations(); 
+    private Locations loc = new Locations();     
     
     static{numEkz = 0;}
 
-    public Human(String name){    
+    public Human(String name, int X, int Y){    
         this.name = name;
         numEkz++; 
         this.id = numEkz;             
@@ -25,13 +25,12 @@ public abstract class Human implements SetGamesDef{
         this.armor = 1;
         this.attack= 1;
         this.dexterity = 3;
-        this.nameTeam = "noname";    
-        this.x = loc.GetPozition().get(0);
-        this.y = loc.GetPozition().get(1);    
+        this.nameTeam = "noname"; 
+        this.SetLocation(X, Y);
     }
 
     public Human(){
-        this("");
+        this("", 0, 0);
     }
     
     public int GetId(){return this.id;}
@@ -44,11 +43,7 @@ public abstract class Human implements SetGamesDef{
     public int GetArmor(){return this.armor;}
     public int GetAttack(){return this.attack;}
     public int GetDexterity(){return this.dexterity;}  
-    public List<Integer> GetLocation(){
-        // List<Integer> tmpPoz = new ArrayList<Integer>(2);
-        // tmpPoz = Arrays.asList(this.x, this.y);
-        return loc.GetPozition();
-    }      
+    public List<Integer> GetLocation(){return loc.GetPozition();}      
 
     public void SetInd(int inId){this.id = inId;}
     public void SetName(String inName){this.name = inName;}
@@ -70,9 +65,20 @@ public abstract class Human implements SetGamesDef{
     //     this.id, this.name, this.healthNom, this.healthMax, this.damageMin, this.damageMax, 
     //     this.dexterity, this.armor, this.attack);
     // }
-    // @Override
-    // public String GetInfo(){
-    //     return "";
-    // }    
+    
+    @Override
+    public String GetInfo(){
+        String temp = "";
+        if (this instanceof Farmer) temp = "Я крестьянин ";
+        if (this instanceof Bandit) temp = "Я бандит ";
+        if (this instanceof Sniper) temp = "Я снайпер ";
+        if (this instanceof Arbalester) temp = "Я арбалетчик ";
+        if (this instanceof Lancer) temp = "Я копейщик ";
+        if (this instanceof Magician) temp = "Я колдун ";
+        if (this instanceof Monk) temp = "Я монах ";
+        
+        temp += GetName() + ", " + GetLocation();
+        return temp;
+    }    
 
 }

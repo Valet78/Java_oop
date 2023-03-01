@@ -39,11 +39,5 @@ public class Magician extends Human {
 
     // @Override
     // // public void Step() {
-    // }
-
-    @Override
-    public String GetInfo() {        
-        return "Я колдун " + GetName() + ", " + GetLocation();
-    }
-
+    // }    
 }

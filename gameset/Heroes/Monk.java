@@ -38,9 +38,4 @@ public class Monk extends Human{
     // public void Step() {
     // }
     
-    @Override
-    public String GetInfo() {
-        return "Я монах " + GetName() + ", " + GetLocation();
-    }
-
 }

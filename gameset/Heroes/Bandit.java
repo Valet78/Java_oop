@@ -28,9 +28,5 @@ public class Bandit extends Human{
     // @Override
     // public void Step() {
     // }
-
-    @Override
-    public String GetInfo() {
-        return "Я бандит " + GetName() + ", " + GetLocation();
-    }
+    
 }

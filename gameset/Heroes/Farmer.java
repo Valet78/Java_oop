@@ -29,10 +29,10 @@ public class Farmer extends Human{
     // public void Step() {        
     // }
 
-    @Override
-    public String GetInfo() {
-        return "Я крестьянин " + GetName() + ", " + GetLocation();
-    }
+    // @Override
+    // public String GetInfo() {
+    //     return "Я крестьянин " + GetName() + ", " + GetLocation();
+    // }
 
 
 

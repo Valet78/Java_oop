@@ -30,12 +30,4 @@ public class Lancer extends Human{
     // public void Step() {
     // }
 
-
-    @Override
-    public String GetInfo() {
-        return "Я копейщик " + GetName()+ ", " + GetLocation();
-    }
-
-    
-
 }

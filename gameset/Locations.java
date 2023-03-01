@@ -29,5 +29,4 @@ public class Locations {
         this.x = inX;
         this.y = inY;
     }
-
 }
