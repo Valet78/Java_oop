@@ -9,8 +9,8 @@ import gameset.Heroes.*;
 
 public class Attack{    
     static private double dist = 20, disttemp = 0;
-    static List<Integer> locTaget = new ArrayList<>(2); 
-    Human tir;
+    static private List<Integer> locTaget = new ArrayList<>(2); 
+    // private Human tir;
     
     public Attack(){ }     
     
@@ -20,8 +20,8 @@ public class Attack{
         minD = agress.GetDamageMin();
         maxD = agress.GetDamageMax();
         dist100 = agress.GetAttack();
-        dist50 =  dist100 + (int)(dist100 / 2);
-        if(agress instanceof Sniper){
+        dist50 =  dist100 + (int)(dist100 / 2) + 1;
+        if(agress instanceof Sniper || agress instanceof Arbalester){
             if(distTaget <= dist100) uron = maxD;
             if(distTaget > dist100 || distTaget <= dist50) uron = minD + (int)((maxD - minD)/2);
             if(distTaget > dist50) uron = minD;
@@ -29,7 +29,6 @@ public class Attack{
         uron -= taget.GetArmor();
         return uron;
     }
-
         
     // модуль поиска врага ближнего
     public List<Integer> SearchEnemy(Human agress, List<Human> listTaget){
@@ -59,6 +58,16 @@ public class Attack{
         return tmp;
     }
 
+    // Выявление погибших
+    public void DelCorpse(List<Human> inList){
+        List<Integer> tmp = new ArrayList<>();
+
+        inList.forEach((x) -> {
+            if(x.GetHealthNom() == 0) tmp.add(inList.indexOf(x));
+        });
+        // System.out.println(tmp);
+        if(tmp.size() > 0) tmp.forEach((k)-> {inList.remove(k.intValue());});
+    }
 
 
     

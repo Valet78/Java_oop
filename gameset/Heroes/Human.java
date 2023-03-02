@@ -69,15 +69,15 @@ public abstract class Human implements SetGamesDef{
     @Override
     public String GetInfo(){
         String temp = "";
-        if (this instanceof Farmer) temp = "Я крестьянин ";
-        if (this instanceof Bandit) temp = "Я бандит ";
-        if (this instanceof Sniper) temp = "Я снайпер ";
-        if (this instanceof Arbalester) temp = "Я арбалетчик ";
-        if (this instanceof Lancer) temp = "Я копейщик ";
-        if (this instanceof Magician) temp = "Я колдун ";
-        if (this instanceof Monk) temp = "Я монах ";
+        if (this instanceof Farmer) temp = "Крестьянин";
+        if (this instanceof Bandit) temp = "Бандит";
+        if (this instanceof Sniper) temp = "Снайпер";
+        if (this instanceof Arbalester) temp = "Арбалетчик";
+        if (this instanceof Lancer) temp = "Копейщик";
+        if (this instanceof Magician) temp = "Колдун";
+        if (this instanceof Monk) temp = "Монах";
         
-        temp += GetName() + ", " + GetLocation();
+        // temp += GetName() + ", " + GetLocation();
         return temp;
     }    
 

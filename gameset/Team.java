@@ -57,7 +57,7 @@ public class Team {
             indX = 0;
             indY = 0;
         } else {
-            indX = 20;
+            indX = 10;
             indY = 0;
         }
         
@@ -82,10 +82,10 @@ public class Team {
         int setX = 0;
         if(idTeam == 1) {
             setX = indX + 1;
-            indY += 2;
+            indY += 1;
         } else {
             setX = indX - 1;
-            indY += 2;
+            indY += 1;
         }
         switch (inNum) {
             case 0:                    
