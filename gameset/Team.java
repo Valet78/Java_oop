@@ -57,7 +57,7 @@ public class Team {
             indX = 0;
             indY = 0;
         } else {
-            indX = 10;
+            indX = 20;
             indY = 0;
         }
         

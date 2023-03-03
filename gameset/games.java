@@ -22,20 +22,18 @@ public class games{
         // conOut.OutString("--------------");
 
         // В первом только крестьянин, разбойник, снайпер, колдун. Во втором крестьянин, копейщик, арбалетчик, монах.        
-        int[] list1 = new int[]{0, 1, 3, 5};
-        int[] list2 = new int[]{0, 2, 4, 6};
+        int[] list1 = new int[]{0, 2, 3, 4, 6};
+        int[] list2 = new int[]{0, 1, 3, 4, 5};
         
+        // DarkTeam
         Team DarkHeroes = new Team();
-        List<Human> DarkTeam = DarkHeroes.AddTeam(10, "DarkUnit", list2);
-        // DarkTeam.forEach((n) -> {conOut.OutString(n.GetInfo() + "     \t- " + n.GetNameTeam());});
-        cons.OutString("--------------");
-
+        List<Human> DarkTeam = DarkHeroes.AddTeam(10, "DarkUnit", list2);        
+        
+        // LigthTeam
         Team LigthHeroes = new Team();
         List<Human> LigthTeam = LigthHeroes.AddTeam(10, "LigthUnit", list1);        
-        // LigthTeam.forEach((n) -> {conOut.OutString(n.GetInfo() + "     \t- " + n.GetNameTeam());});
-        cons.OutString("--------------");
-
-        // LigthTeam
+        
+        
 
         /*  Создать класс с описанием координат, x и y.
             Добавить в абстрактный класс поле с координатами и пробросить его инициализацию до конструкторов персонажей.
@@ -92,7 +90,7 @@ public class games{
                 LigthTeam.forEach((n) -> {
                     n.Step(n, LigthTeam, DarkTeam);
                 });
-                // Проверка оствшихся в живых
+                // Проверка оставшихся в живых
                 att.DelCorpse(DarkTeam);
             }
             // Аттака темных
@@ -100,7 +98,7 @@ public class games{
                 DarkTeam.forEach((n) -> {
                     n.Step(n, DarkTeam, LigthTeam);
                 });
-                // Проверка оствшихся в живых
+                // Проверка оставшихся в живых
                 att.DelCorpse(LigthTeam);
             }
             
@@ -110,7 +108,7 @@ public class games{
             
         }
         instr.close();
-
+        cons.OutString("Игра закончена!!!");
         cons.OutTab(DarkTeam, LigthTeam);
 
     }

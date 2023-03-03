@@ -2,14 +2,14 @@ package gameset.Heroes;
 /* 
 * Монах 
 */
-public class Monk extends Human{
-    public int mannaMax, mannaNom;
-    
+public class Monk extends Magi {
+        
     public Monk(){    
-        this("", 0, 0);       
+        super();       
         super.SetName("magician_" + Integer.valueOf(super.GetId()).toString());        
     }
     public Monk(String inName, int X, int Y){  
+        super(inName, X, Y);
         super.SetName(inName);
         super.SetHealthMax(30);
         super.SetHealthNom(30);
@@ -18,24 +18,15 @@ public class Monk extends Human{
         super.SetAttack(12);
         super.SetArmor(7);
         super.SetDexterity(5);
-        this.mannaMax = 1;
-        this.mannaNom = 1;
+        super.SetMannaMax(1);
+        super.SetMannaNom(1);
         super.SetLocation(X, Y);       
     }
-
-    public int GetMannaMax(){return this.mannaMax;}
-    public int GetMannaNom(){return this.mannaNom;}
-    public void SetMannaMax(int inManna){this.mannaMax = inManna;}
-    public void SetMannaNom(int inManna){this.mannaNom = inManna;}
 
     // public void GetInfo(){        
     //     System.out.printf("Я Монах (id=%d name=%s hp=%d(%d) damage=%d-%d dex=%d arm=%d attack=%d manna=%d(%d))\n", 
     //     super.GetId(), super.GetName(), super.GetHealthNom(), super.GetHealthMax(), super.GetDamageMin(), super.GetDamageMax(), 
     //     super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.mannaNom, this.mannaMax);
-    // }
-
-    // @Override
-    // public void Step() {
     // }
     
 }

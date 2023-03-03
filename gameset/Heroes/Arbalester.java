@@ -7,11 +7,12 @@ public class Arbalester extends Shooter{
     // private int arrows;
 
     public Arbalester(){        
-        // this("",0, 0);           
+        super();           
         super.SetName("arbalester_" + Integer.valueOf(super.GetId()).toString());        
     }
     
     public Arbalester(String inName, int X, int Y){
+        super(inName, X, Y);
         super.SetName(inName);
         super.SetHealthMax(10);
         super.SetHealthNom(10);

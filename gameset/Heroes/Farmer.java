@@ -1,10 +1,15 @@
 package gameset.Heroes;
+
+import java.util.List;
+
+import gameset.Attack;
+
 /*
  * Крестьянин
  */
 public class Farmer extends Human{  
-    private int delivery = 1;  
-    
+    private int delivery = 1, arrow = 0, tmpInd = 0;  
+    private Shooter shooter = null;
     public Farmer(){  
         this("", 0, 0);        
         super.SetName("farmer_" +  Integer.valueOf(super.GetId()).toString()); 
@@ -25,9 +30,32 @@ public class Farmer extends Human{
     //     super.GetDexterity(), super.GetArmor(), super.GetAttack(), this.delivery);
     // }
 
-    // @Override
-    // public void Step() {        
-    // }
+    @Override
+    public void Step(Human agress, List<Human> ownTeam, List<Human> listTaget) {     
+        Attack att = new Attack();
+        arrow = 32;
+        // Если обнаруживаем стрелков, то добавляем стрелу тому, у кого их мало или любому 
+        List<Integer> indShooter = att.SearchShooters(ownTeam);
+        
+        if(indShooter.size() != 0) {           
+            indShooter.forEach((n) -> {
+                shooter = (Shooter)ownTeam.get(n.intValue());
+                if(shooter.GetArrows() < arrow){
+                   arrow = shooter.GetArrows();
+                   tmpInd = n.intValue();
+                } 
+            });
+
+            try {
+                shooter = (Shooter)ownTeam.get(tmpInd);
+                shooter.SetArrows(shooter.GetArrows() + 1);
+                System.out.println("Добавлена стрела " + shooter.GetName());
+            } catch (Exception e) {
+                
+            }
+        }
+               
+    }
 
     // @Override
     // public String GetInfo() {

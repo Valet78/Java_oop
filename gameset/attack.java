@@ -4,28 +4,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 // import java.util.Random;
+import java.util.Random;
 
 import gameset.Heroes.*;
 
 public class Attack{    
-    static private double dist = 20, disttemp = 0;
+    private double dist = 20, disttemp = 0;    
     static private List<Integer> locTaget = new ArrayList<>(2); 
-    // private Human tir;
-    
+       
     public Attack(){ }     
     
     // Вычисление урона противнику
     public int GoAttack(Human agress, Human taget, int distTaget){
-        int uron = 0, maxD = 0, minD = 0, dist100 = 0, dist50 = 0;
+        Random rnd = new Random();
+        int uron = 0, maxD = 0, minD = 0, dist100 = 0, distMax = 0;
         minD = agress.GetDamageMin();
         maxD = agress.GetDamageMax();
-        dist100 = agress.GetAttack();
-        dist50 =  dist100 + (int)(dist100 / 2) + 1;
-        if(agress instanceof Sniper || agress instanceof Arbalester){
-            if(distTaget <= dist100) uron = maxD;
-            if(distTaget > dist100 || distTaget <= dist50) uron = minD + (int)((maxD - minD)/2);
-            if(distTaget > dist50) uron = minD;
-        }
+        distMax = agress.GetAttack();
+        dist100 = (int)(distMax/2) + 1;
+        
+        if(distTaget <= dist100) uron = maxD;
+        if(distTaget > dist100 && distTaget <= distMax) uron = rnd.nextInt(minD, maxD);
+        if(distTaget > distMax) uron = 0;
         uron -= taget.GetArmor();
         return uron;
     }
@@ -49,14 +49,27 @@ public class Attack{
     }
 
     // Поиск среди своих крестьянина
-    public List<Integer> SearchFarmer(List<Human> listUnit){
-        List<Integer> tmp = new ArrayList<>();
+    // public List<Integer> SearchFarmer(List<Human> listUnit){
+    //     List<Integer> tmp = new ArrayList<>();
+
+    //     listUnit.forEach((n) ->{
+    //         if(n instanceof Farmer) tmp.add(listUnit.indexOf(n));
+    //     });
+    //     return tmp;
+    // }
+
+    // Поиск среди своих стрелка
+    public List<Integer> SearchShooters(List<Human> listUnit){
+        List<Integer> indShooter = new ArrayList<>();                       
 
         listUnit.forEach((n) ->{
-            if(n instanceof Farmer) tmp.add(listUnit.indexOf(n));
+            if(n instanceof Sniper || n instanceof Arbalester) {            
+                indShooter.add(listUnit.indexOf(n));                    
+            }              
         });
-        return tmp;
+        return indShooter;
     }
+    
 
     // Выявление погибших
     public void DelCorpse(List<Human> inList){
@@ -66,7 +79,7 @@ public class Attack{
             if(x.GetHealthNom() == 0) tmp.add(inList.indexOf(x));
         });
         // System.out.println(tmp);
-        if(tmp.size() > 0) tmp.forEach((k)-> {inList.remove(k.intValue());});
+        if(tmp.size() > 0) tmp.forEach((k) -> {inList.remove(k.intValue());});
     }
 
 

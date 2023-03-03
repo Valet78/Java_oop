@@ -8,11 +8,12 @@ public class Sniper extends Shooter{
     // private int arrows;  
 
     public Sniper(){        
-        // this("", 0, 0);         
+        super();         
         super.SetName("sniper_" + Integer.valueOf(super.GetId()).toString());        
     }
     
-    public Sniper(String inName, int X, int Y){        
+    public Sniper(String inName, int X, int Y){      
+        super(inName, X, Y);
         super.SetName(inName);
         super.SetHealthMax(15);
         super.SetHealthNom(15);
