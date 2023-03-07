@@ -9,6 +9,7 @@ import gameset.Attack;
  */
 public class Farmer extends Human{  
     private int delivery = 1, arrow = 0, tmpInd = 0;  
+    static int xx = 0, yy = 0;
     private Shooter shooter = null;
     public Farmer(){  
         this("", 0, 0);        
@@ -36,12 +37,13 @@ public class Farmer extends Human{
         arrow = 32;
         // Если обнаруживаем стрелков, то добавляем стрелу тому, у кого их мало или любому 
         List<Integer> indShooter = att.SearchShooters(ownTeam);
-        
+                
         if(indShooter.size() != 0) {           
             indShooter.forEach((n) -> {
                 shooter = (Shooter)ownTeam.get(n.intValue());
                 if(shooter.GetArrows() < arrow){
                    arrow = shooter.GetArrows();
+                   
                    tmpInd = n.intValue();
                 } 
             });
@@ -49,9 +51,24 @@ public class Farmer extends Human{
             try {
                 shooter = (Shooter)ownTeam.get(tmpInd);
                 shooter.SetArrows(shooter.GetArrows() + 1);
-                System.out.println("Добавлена стрела " + shooter.GetName());
+                // System.out.println("Добавлена стрела " + shooter.GetName());
             } catch (Exception e) {
                 
+            }
+        }
+        else {
+            xx = GetLocation().get(0);
+            yy = GetLocation().get(1);
+
+            if(GetNameTeam() == "DarkUnit") {
+                if(xx + 1 <= MAX_X){
+                    SetLocation(xx + 1, yy);
+                }
+            }
+            if(GetNameTeam() == "LigthUnit") {
+                if(xx - 1 >= 0){
+                    SetLocation(xx - 1, yy);
+                }
             }
         }
                

@@ -55,10 +55,10 @@ public class Team {
         int rdn = 0;
         if(idTeam == 1) {
             indX = 0;
-            indY = 0;
+            indY = -1;
         } else {
-            indX = 20;
-            indY = 0;
+            indX = 19;
+            indY = -1;
         }
         
         for(int i=0; i < inNum; i++){
@@ -82,10 +82,10 @@ public class Team {
         int setX = 0;
         if(idTeam == 1) {
             setX = indX + 1;
-            indY += 1;
+            indY++;
         } else {
             setX = indX - 1;
-            indY += 1;
+            indY++;
         }
         switch (inNum) {
             case 0:                    

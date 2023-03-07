@@ -7,14 +7,14 @@ package gameset;
 import java.util.List;
 import java.util.Scanner;
 
-// import gameset.Heroes.Arbalester;
 import gameset.Heroes.Human;
-// import gameset.Heroes.Sniper;
 
 public class games{
+    static List<Human> LigthTeam = null, DarkTeam = null;
+
     public static void main(String[] args) {
         Console cons = new Console();
-        
+        ;
         // Составить список персонажей        
         // Team rndTeam = new Team();
         // List<Human> rndList = rndTeam.AddTeamRnd(10, "RndTeam"); // создадим 10 случайных персонажей
@@ -22,30 +22,17 @@ public class games{
         // conOut.OutString("--------------");
 
         // В первом только крестьянин, разбойник, снайпер, колдун. Во втором крестьянин, копейщик, арбалетчик, монах.        
-        int[] list1 = new int[]{0, 2, 3, 4, 6};
-        int[] list2 = new int[]{0, 1, 3, 4, 5};
+        int[] list1 = new int[]{0, 2, 3, 6};
+        int[] list2 = new int[]{0, 1, 4, 5};
         
         // DarkTeam
         Team DarkHeroes = new Team();
-        List<Human> DarkTeam = DarkHeroes.AddTeam(10, "DarkUnit", list2);        
+        DarkTeam = DarkHeroes.AddTeam(10, "DarkUnit", list2);        
         
         // LigthTeam
         Team LigthHeroes = new Team();
-        List<Human> LigthTeam = LigthHeroes.AddTeam(10, "LigthUnit", list1);        
+        LigthTeam = LigthHeroes.AddTeam(10, "LigthUnit", list1);        
         
-        
-
-        /*  Создать класс с описанием координат, x и y.
-            Добавить в абстрактный класс поле с координатами и пробросить его инициализацию до конструкторов персонажей.
-            Farmer farmer = new Farmer(getName(), x, y);
-            Реализовать метод step() лучников. 
-            3.1 Если жизнь равна нулю или стрел нет, завершить оьработку. 
-            3.2 Поиск среди противников наиболее приближённого.             -> Attack.java
-            3.3 Нанести среднее повреждение найденному противнику. 
-            3.4 Найти среди своих крестьянина.                              -> Attack.java
-            3.5 Если найден завершить метод иначе уменьшить запас стрел на одну. 
-        */
-
         
         // Если в команде светлых есть лучник/снайпер даем ему ход
         
@@ -82,16 +69,19 @@ public class games{
         String tpause = "";
         Scanner instr = new Scanner(System.in);
         Attack att = new Attack();
+        
 
-        while(LigthTeam.size() > 0 && DarkTeam.size() > 0){
+        while(LigthTeam.size() > 0 && DarkTeam.size() > 0){  
             cons.OutTab(DarkTeam, LigthTeam);
+            cons.GamePlatz(LigthTeam, DarkTeam);
             // Аттака светлых
             if (DarkTeam.size() > 0){
                 LigthTeam.forEach((n) -> {
                     n.Step(n, LigthTeam, DarkTeam);
                 });
                 // Проверка оставшихся в живых
-                att.DelCorpse(DarkTeam);
+                DarkTeam = att.DelCorpse(DarkTeam);
+                
             }
             // Аттака темных
             if(LigthTeam.size() > 0){
@@ -99,17 +89,23 @@ public class games{
                     n.Step(n, DarkTeam, LigthTeam);
                 });
                 // Проверка оставшихся в живых
-                att.DelCorpse(LigthTeam);
+                LigthTeam = att.DelCorpse(LigthTeam);
+
+                
             }
             
-
-            System.out.println("Для выполнения хода введите любой символ. Для выхода Ctrl + 'C'.");
-            tpause = instr.next();
+            System.out.println("Для выполнения хода нажмте Enter. Для выхода Ctrl + 'C'.");
+            tpause = instr.nextLine();
+            
             
         }
         instr.close();
         cons.OutString("Игра закончена!!!");
+        if(DarkTeam.size() == 0) cons.OutString("Победила команда Светлых!");
+        else cons.OutString("Победила команда Тёмных!");
         cons.OutTab(DarkTeam, LigthTeam);
+        
+        
 
     }
     

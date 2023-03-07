@@ -72,14 +72,14 @@ public class Attack{
     
 
     // Выявление погибших
-    public void DelCorpse(List<Human> inList){
-        List<Integer> tmp = new ArrayList<>();
+    public List<Human> DelCorpse(List<Human> inList){
+        List<Human> newList = new ArrayList<>();        
 
         inList.forEach((x) -> {
-            if(x.GetHealthNom() == 0) tmp.add(inList.indexOf(x));
+            if(x.GetHealthNom() != 0) newList.add(x);
         });
-        // System.out.println(tmp);
-        if(tmp.size() > 0) tmp.forEach((k) -> {inList.remove(k.intValue());});
+        
+        return newList;
     }
 
 

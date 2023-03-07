@@ -9,6 +9,6 @@ interface  SetGamesDef{
 
     void Step(Human agress, List<Human> ownTeam, List<Human> listTaget);
     String GetInfo();
-    
+
 }
  
