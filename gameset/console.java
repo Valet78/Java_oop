@@ -1,5 +1,6 @@
 package gameset;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gameset.Heroes.Arbalester;
@@ -12,14 +13,15 @@ import gameset.Heroes.Sniper;
 
 public class Console{
     static String forma = "", formZag = "",razdel = "";  
-    static int inS = 0, inK = 0;  
+    static int inS = 0, inK = 0, stepNum = 0;  
+    static List<String> listStrOut = new ArrayList<String>(6);
     
     public Console(){}
 
     public void OutString (String instr){
         System.out.println(instr);
     }
-
+/* 
     public void OutTab(List<Human> list1, List<Human> list2){
         int len1 = list1.size(), len2 = list2.size();
         int indLen = (len1 > len2) ? len1: len2;
@@ -84,7 +86,7 @@ public class Console{
         System.out.println(razdel);
         System.out.println("\u001B[0m");
     }
-
+ */
     private String AddToString(Human inHuman){
         String ttp = "";       
             if(inHuman instanceof Sniper || inHuman instanceof Arbalester){
@@ -99,22 +101,15 @@ public class Console{
         return ttp;       
     }
 
-    
-
-    public void GamePlatz(List<Human> list1, List<Human> list2){
+    public void GamePlatz(List<Human> list1, List<Human> list2, int stepNum){
         String [][] field = new String[10][20];
         String [][] plaz = new String[21][41];
-
-        String formats = "%1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %3s %1s %n";
-
-        System.out.println();
 
         for (int s = 0; s < 10; s++) {
             for (int k = 0; k < 20; k++) {
                 field[s][k] = " ";
             }
-        }
-        
+        }        
         
         list1.forEach((n) -> {
             inK = n.GetLocation().get(0);
@@ -140,12 +135,41 @@ public class Console{
             }
         }        
 
+        // Вывод на экран        
+        System.out.println("\033[2J");
+        String repeat1 = new String(new char[45]).replace("\0", " ");
+        String repeat2 = new String(new char[75]).replace("\0", "-");
+        razdel = repeat1 + repeat2;
+        formZag = "%-44s %15s %1s %15s %1s %8s %1s %6s %1s %6s %1s %8s";
+        forma = "%19s %1s %15s %1s %8s %1s %6s %1s %6s %1s %8s %n";
+        
+        
+        System.out.print("\u001B[32m");
+        System.out.println("\n"+ razdel);
+        System.out.printf(formZag, "Ход № " + Integer.toString(stepNum), "Type", "|", "Name", "|", "Location", "|", "HPmax", "|", "HPnom",  "|", "MPnom");
+        System.out.println("\n"+ razdel);
+        System.out.print("\u001B[0m");
+
         for(int s = 0; s < 21; s++){
             for(int k=0; k < 41; k++) {
-                System.out.print(plaz[s][k]);
+                System.out.print(plaz[s][k]);                
             }
-            System.out.println();
+            // System.out.println();
+            if(s == 10) System.out.println("    " + repeat2);
+            if(s >= 0 && s < 10){
+                listStrOut = StringForTab(list1, s);
+                System.out.printf(forma, listStrOut.get(0), "|", listStrOut.get(1), "|", listStrOut.get(2), 
+                                    "|", listStrOut.get(3), "|", listStrOut.get(4), "|", listStrOut.get(5));
+
+            }
+            if(s > 10 && s < 21){
+                listStrOut = StringForTab(list2, s - 11);
+                System.out.printf(forma, listStrOut.get(0), "|", listStrOut.get(1), "|", listStrOut.get(2), 
+                                    "|", listStrOut.get(3), "|", listStrOut.get(4), "|", listStrOut.get(5));
+            }          
+            // System.out.println();  
         }
+        System.out.println();
     }
 
     private String Label(String nameClass){
@@ -180,6 +204,27 @@ public class Console{
         return tmpStr;
     }
 
-    
+    private List<String> StringForTab (List<Human> inList, int indList){
+        List<String> tmpList = new ArrayList<>(6);
+
+        if(indList < inList.size()){
+            tmpList.add(inList.get(indList).GetInfo());
+            tmpList.add(inList.get(indList).GetName());
+            tmpList.add("[" + Integer.toString(inList.get(indList).GetLocation().get(0)) + ", " + Integer.toString(inList.get(indList).GetLocation().get(1)) + "]");
+            tmpList.add(Integer.toString(inList.get(indList).GetHealthMax()));            
+            tmpList.add(Integer.toString(inList.get(indList).GetHealthNom()));
+            tmpList.add(AddToString(inList.get(indList)));
+        } 
+        else {
+            tmpList.add("         ");
+            tmpList.add("         ");
+            tmpList.add("     ");            
+            tmpList.add("  ");
+            tmpList.add("  ");
+            tmpList.add("  ");        
+        }
+
+        return tmpList;
+    }
 }
 

@@ -42,68 +42,60 @@ public abstract class Magi extends Human{
                     SetState(true);
                 }
             });
-        } else {        
-            if(!GetState()){
-                xx = GetLocation().get(0);
-                yy = GetLocation().get(1);
 
-                if(GetNameTeam() == "DarkUnit") {
-                    if(xx + 1 <= MAX_X){
-                        SetLocation(xx + 1, yy);
+            // Если лечить никого не нужно и в радиусе действия есть враг - наносим урон, иначе делаем ход вперед
+            if(!GetState()){ 
+                // Поиск ближнего врага
+                List<Integer> tag = att.SearchEnemy(agress, listTaget);
+                tagUnit = listTaget.get(tag.get(0));
+                dist = tag.get(1);
+
+                if (dist <= GetAttack()) {
+                    uron = att.GoAttack(agress, tagUnit, dist);
+                    if(uron > 0) {
+                        tmph = tagUnit.GetHealthNom() - uron;
+                        if(tmph > 0) tagUnit.SetHealthNom(tmph);
+                        else tagUnit.SetHealthNom(0);
+                    } 
+                }
+                else {
+                    xx = GetLocation().get(0);
+                    yy = GetLocation().get(1);
+
+                    if(GetNameTeam() == "DarkUnit") {
+                        if(xx + 1 <= MAX_X){
+                            SetLocation(xx + 1, yy);
+                        }
+                    }
+                    if(GetNameTeam() == "LigthUnit") {
+                        if(xx - 1 >= 0){
+                            SetLocation(xx - 1, yy);
+                        }
                     }
                 }
-                if(GetNameTeam() == "LigthUnit") {
-                    if(xx - 1 >= 0){
-                        SetLocation(xx - 1, yy);
-                    }
-                }
-                SetState(false);
+                
             } 
-            else {
-                mnMax = this.GetMannaMax();
-                mnNom = this.GetMannaNom();
-                if(mnNom < mnMax) this.SetMannaNom(mnNom + 1);
+            
+        } else {
+            xx = GetLocation().get(0);
+            yy = GetLocation().get(1);
+
+            if(GetNameTeam() == "DarkUnit") {
+                if(xx + 1 <= MAX_X){
+                    SetLocation(xx + 1, yy);
+                }
             }
+            if(GetNameTeam() == "LigthUnit") {
+                if(xx - 1 >= 0){
+                    SetLocation(xx - 1, yy);
+                }
+            } 
         }
 
-
-
-        
-        
-
-
-        
-        // Если лечить никого не нужно и в радиусе действия есть враг - наносим урон, иначе делаем ход вперед
-            
-  /*           // Поиск ближнего врага
-            List<Integer> tag = att.SearchEnemy(agress, listTaget);
-            tagUnit = listTaget.get(tag.get(0));
-            dist = tag.get(1);
-
-            if (dist <= GetAttack()) {
-                uron = att.GoAttack(agress, tagUnit, dist);
-                if(uron > 0) {
-                    tmph = tagUnit.GetHealthNom() - uron;
-                    if(tmph > 0) tagUnit.SetHealthNom(tmph);
-                    else tagUnit.SetHealthNom(0);
-                } 
-            }
-            else {
-                xx = GetLocation().get(0);
-                yy = GetLocation().get(1);
-
-                if(GetNameTeam() == "DarkUnit") {
-                    if(xx + 1 <= MAX_X){
-                        SetLocation(xx + 1, yy);
-                    }
-                }
-                if(GetNameTeam() == "LigthUnit") {
-                    if(xx - 1 >= 0){
-                        SetLocation(xx - 1, yy);
-                    }
-                }
-            }
-          */
+        mnMax = this.GetMannaMax();
+        mnNom = this.GetMannaNom();
+        if(mnNom < mnMax) this.SetMannaNom(mnNom + 1);
+        SetState(false);
                 
     }
 }

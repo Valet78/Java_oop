@@ -11,6 +11,8 @@ import gameset.Heroes.Human;
 
 public class games{
     static List<Human> LigthTeam = null, DarkTeam = null;
+    static String tpause = "";
+    static int stepNum = 0;
 
     public static void main(String[] args) {
         Console cons = new Console();
@@ -66,14 +68,15 @@ public class games{
      
         
         
-        String tpause = "";
+        tpause = "";
         Scanner instr = new Scanner(System.in);
         Attack att = new Attack();
         
 
         while(LigthTeam.size() > 0 && DarkTeam.size() > 0){  
-            cons.OutTab(DarkTeam, LigthTeam);
-            cons.GamePlatz(LigthTeam, DarkTeam);
+            // cons.OutTab(DarkTeam, LigthTeam);
+            stepNum++;
+            cons.GamePlatz(LigthTeam, DarkTeam, stepNum);
             // Аттака светлых
             if (DarkTeam.size() > 0){
                 LigthTeam.forEach((n) -> {
@@ -103,7 +106,7 @@ public class games{
         cons.OutString("Игра закончена!!!");
         if(DarkTeam.size() == 0) cons.OutString("Победила команда Светлых!");
         else cons.OutString("Победила команда Тёмных!");
-        cons.OutTab(DarkTeam, LigthTeam);
+        // cons.OutTab(DarkTeam, LigthTeam);
         
         
 
